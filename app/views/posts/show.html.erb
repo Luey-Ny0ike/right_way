@@ -5,6 +5,8 @@
   <%= @post.title %>
 </p>
 
+<%= image_tag @post.image.url(:large)%>
+
 <p>
   <strong>Message:</strong>
   <%= @post.message %>
