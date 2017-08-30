@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comments
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   # GET posts/1/comments
   def index
@@ -14,6 +15,7 @@ class CommentsController < ApplicationController
   # GET posts/1/comments/new
   def new
     @comment = @post.comments.build
+    @comment.user_id = current_user.id
   end
 
   # GET posts/1/comments/1/edit
@@ -23,6 +25,7 @@ class CommentsController < ApplicationController
   # POST posts/1/comments
   def create
     @comment = @post.comments.build(comment_params)
+    @comment.user_id = current_user.id
 
     if @comment.save
       redirect_to([@comment.post, @comment], notice: 'Comment was successfully created.')
