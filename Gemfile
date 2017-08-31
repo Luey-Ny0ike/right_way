@@ -65,3 +65,4 @@ gem 'rails_admin', '>= 1.0.0.rc'
 gem 'cancancan'
 gem "paperclip"
 gem 'nested_scaffold'
+gem 'will_paginate'
